@@ -6,6 +6,7 @@
 #include <vector>
 #include <stdlib.h>
 #include<numeric>
+#include <algorithm> 
 using namespace std;
 
 class dienynas {
@@ -21,17 +22,26 @@ public:
     vector< double > average;
     vector < double > egzaminasV;
     vector < double > galutinisV;
+    vector < double > galutinisM;
 
     string vardas;
     string pavarde;
     double egzaminas;
 
     double vidurkisG;
+    double vidurkisGM;
+
+    int state = 2;
+    string answer;
+    double n;
 
     int suma;
-    int temp;
+    double temp;
 
     void input();
+    double vidurkisV();
+    double vidurkisM();
+    double finalGradeM(double, double);
     double finalGradeV(double, double);
     void print();
 };
@@ -40,6 +50,9 @@ void dienynas::input() {
 
     cout << "Kiek studentu pildysite? " << endl;
     cin >> studentai;
+
+    cout << "Ar norite naudoti vidurkio isvedimui mediana? y/n ";
+    cin >> answer;
 
     for (int i = 0; i < studentai; i++)
     {
@@ -54,25 +67,79 @@ void dienynas::input() {
         cout << "Kiek namu darbu padare? ";
         cin >> namuDarbai;
 
-        for (int k = 1; k <= namuDarbai; k++)
-        {
-            cout << k << " Namu darbo pazymys: ";
-            cin >> suma;
-            namaiV.push_back(suma);
-            temp = accumulate(namaiV.begin(), namaiV.end(), 0) / namuDarbai;
+        if (answer == "y" || answer == "Y") {
+            state = 1;
+        }
+        else if (answer == "n" || answer == "N") {
+            state = 2;
+        }
+        else {
+            cout << "Something went wrong.";
         }
 
-        average.push_back(temp);
-        namaiV.clear();
+        if (state == 1) {
 
-        cout << "Iveskite egzamino bala: ";
-        cin >> egzaminas;
-        egzaminasV.push_back(egzaminas);
+            vidurkisM();
 
-        finalGradeV(average[i], egzaminasV[i]);
+            cout << "Iveskite egzamino bala: ";
+            cin >> egzaminas;
+            egzaminasV.push_back(egzaminas);
+
+            finalGradeM(average[i], egzaminasV[i]);
+
+        }
+        else if (state == 2) {
+
+            vidurkisV();
+
+            cout << "Iveskite egzamino bala: ";
+            cin >> egzaminas;
+            egzaminasV.push_back(egzaminas);
+
+            finalGradeV(average[i], egzaminasV[i]);
+
+        }
+        else {
+            cout << "Something went wrong.";
+        }
+
+
     }
 }
 
+double dienynas::vidurkisV() {
+    for (int k = 1; k <= namuDarbai; k++)
+    {
+        cout << k << " Namu darbo pazymys: ";
+        cin >> suma;
+        namaiV.push_back(suma);
+        temp = accumulate(namaiV.begin(), namaiV.end(), 0) / namuDarbai;
+    }
+
+    average.push_back(temp);
+    namaiV.clear();
+
+}
+
+double dienynas::vidurkisM() {
+    for (int k = 1; k <= namuDarbai; k++)
+    {
+        cout << k << " Namu darbo pazymys: ";
+        cin >> suma;
+        namaiV.push_back(suma);
+    }
+
+    sort(namaiV.begin(), namaiV.end());
+    n = (namaiV.size() % 2 == 0 ? (namaiV[namaiV.size() / 2] + namaiV[(namaiV.size() / 2) - 1]) / 2 : namaiV[namaiV.size() / 2]);
+
+    average.push_back(n);
+    namaiV.clear();
+}
+
+double dienynas::finalGradeM(double vidurkis, double egzaminas) {
+    vidurkisGM = 0.4 * vidurkis + 0.6 * egzaminas;
+    galutinisM.push_back(vidurkisGM);
+}
 
 double dienynas::finalGradeV(double vidurkis, double egzaminas) {
     vidurkisG = 0.4 * vidurkis + 0.6 * egzaminas;
@@ -84,14 +151,30 @@ void dienynas::print() {
     const int nameWidth = 18;
 
     cout << endl;
-    cout << "Pavarde           " << "Vardas            " << "Galutinis (Vid.)" << endl;
+    if (state == 1) {
+        cout << "Pavarde           " << "Vardas            " << "Galutinis (Med.)" << endl;
+    }
+    else if (state == 2) {
+        cout << "Pavarde           " << "Vardas            " << "Galutinis (Vid.)" << endl;
+    }
+    else {
+        cout << "Something went wrong!";
+    }
     cout << "---------------------------------------------------" << endl;
 
     for (int i = 0; i < studentai; i++)
     {
         cout << left << setw(nameWidth) << setfill(separator) << pavardeV[i];
         cout << left << setw(nameWidth) << setfill(separator) << vardasV[i];
-        cout << left << setw(nameWidth) << setfill(separator) << setprecision(2) << fixed << galutinisV[i];
+        if (state == 1) {
+            cout << left << setw(nameWidth) << setfill(separator) << setprecision(2) << fixed << galutinisM[i];
+        }
+        else if (state == 2) {
+            cout << left << setw(nameWidth) << setfill(separator) << setprecision(2) << fixed << galutinisV[i];
+        }
+        else {
+            cout << "Something went wrong!";
+        }
         cout << endl;
     }
 
