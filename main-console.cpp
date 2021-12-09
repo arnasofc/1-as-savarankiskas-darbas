@@ -125,6 +125,7 @@ void dienynas::input() {
     else if (namuDarbaiRandomAts == "n" || namuDarbaiRandomAts == "N") {
         for (int i = 0; i < studentai; i++)
         {
+
             mokDuomenys();
 
             cout << "Ar yra zinomas padarytu namu darbu skaicius (n) y/n? ";
@@ -282,4 +283,6 @@ int main() {
     d1.input();
     system("CLS");
     d1.print();
+
+    system("pause");
 }
