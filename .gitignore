@@ -1,6 +1,7 @@
 .vscode
 .vscode/tasks.json
 .vscode/launch.json
+.vscode/settings.json
 main-file.exe
 main-console.exe
 v0_2-main.exe
