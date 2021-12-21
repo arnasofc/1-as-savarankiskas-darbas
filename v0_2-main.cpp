@@ -14,26 +14,26 @@ typedef Clock::time_point ClockTime;
 
 class versijadu {
 public:
-    ofstream sarasas1{ "sarasai/sarasas1.txt", ios_base::app };
-    ofstream sarasas2{ "sarasai/sarasas2.txt", ios_base::app };
-    ofstream sarasas3{ "sarasai/sarasas3.txt", ios_base::app };
-    ofstream sarasas4{ "sarasai/sarasas4.txt", ios_base::app };
-    ofstream sarasas5{ "sarasai/sarasas5.txt", ios_base::app };
+    ofstream sarasas1{ "sarasas1.txt", ios_base::app };
+    ofstream sarasas2{ "sarasas2.txt", ios_base::app };
+    ofstream sarasas3{ "sarasas3.txt", ios_base::app };
+    ofstream sarasas4{ "sarasas4.txt", ios_base::app };
+    ofstream sarasas5{ "sarasas5.txt", ios_base::app };
 
-    ofstream sarasas1_vargsiukai{ "final-sarasai/sarasas1-vargsiukai.txt", ios_base::app };
-    ofstream sarasas1_kietiakiai{ "final-sarasai/sarasas1-kietiakiai.txt", ios_base::app };
+    ofstream sarasas1_vargsiukai{ "sarasas1-vargsiukai.txt", ios_base::app };
+    ofstream sarasas1_kietiakiai{ "sarasas1-kietiakiai.txt", ios_base::app };
 
-    ofstream sarasas2_vargsiukai{ "final-sarasai/sarasas2-vargsiukai.txt", ios_base::app };
-    ofstream sarasas2_kietiakiai{ "final-sarasai/sarasas2-kietiakiai.txt", ios_base::app };
+    ofstream sarasas2_vargsiukai{ "sarasas2-vargsiukai.txt", ios_base::app };
+    ofstream sarasas2_kietiakiai{ "sarasas2-kietiakiai.txt", ios_base::app };
 
-    ofstream sarasas3_vargsiukai{ "final-sarasai/sarasas3-vargsiukai.txt", ios_base::app };
-    ofstream sarasas3_kietiakiai{ "final-sarasai/sarasas3-kietiakiai.txt", ios_base::app };
+    ofstream sarasas3_vargsiukai{ "sarasas3-vargsiukai.txt", ios_base::app };
+    ofstream sarasas3_kietiakiai{ "sarasas3-kietiakiai.txt", ios_base::app };
 
-    ofstream sarasas4_vargsiukai{ "final-sarasai/sarasas4-vargsiukai.txt", ios_base::app };
-    ofstream sarasas4_kietiakiai{ "final-sarasai/sarasas4-kietiakiai.txt", ios_base::app };
+    ofstream sarasas4_vargsiukai{ "sarasas4-vargsiukai.txt", ios_base::app };
+    ofstream sarasas4_kietiakiai{ "sarasas4-kietiakiai.txt", ios_base::app };
 
-    ofstream sarasas5_vargsiukai{ "final-sarasai/sarasas5-vargsiukai.txt", ios_base::app };
-    ofstream sarasas5_kietiakiai{ "final-sarasai/sarasas5-kietiakiai.txt" , ios_base::app };
+    ofstream sarasas5_vargsiukai{ "sarasas5-vargsiukai.txt", ios_base::app };
+    ofstream sarasas5_kietiakiai{ "sarasas5-kietiakiai.txt" , ios_base::app };
 
     int max;
 
@@ -100,9 +100,9 @@ public:
     void output_sarasas5();
 
     void resetSarasus();
+    void resetIsrusiuotusFailus();
     void output_sarasu_gen();
     void output_rusiavimas();
-
 
     ClockTime start_time;
     ClockTime end_time;
@@ -130,7 +130,6 @@ void versijadu::resetVectors() {
     egzaminasV.clear();
     galutinisM.clear();
     galutinisV.clear();
-
     namaiV.clear();
     averageV.clear();
     averageM.clear();
@@ -139,10 +138,8 @@ void versijadu::resetVectors() {
 void versijadu::sarasas1_gen() {
     max = 10;
     srand(time(0));
-
     sarasas1 << "Pavarde      " << "Vardas       " << "Egz      " << "ND1 - ND5" << endl;
     sarasas1 << "------------------------------------------------" << endl;
-
     cout << "Sarasas 1 is being generated..." << endl;
     for (int i = 1; i <= 1000; i++)
     {
@@ -157,17 +154,14 @@ void versijadu::sarasas1_gen() {
     }
     cout << "Sarasas 1 has been generated." << endl;
     cout << endl;
-
     sarasas1.close();
 }
 
 void versijadu::sarasas2_gen() {
     max = 10;
     srand(time(0));
-
     sarasas2 << "Pavarde      " << "Vardas       " << "Egz      " << "ND1 - ND5" << endl;
     sarasas2 << "------------------------------------------------" << endl;
-
     cout << "Sarasas 2 is being generated..." << endl;
     for (int i = 1; i <= 10000; i++)
     {
@@ -182,17 +176,14 @@ void versijadu::sarasas2_gen() {
     }
     cout << "Sarasas 2 has been generated." << endl;
     cout << endl;
-
     sarasas2.close();
 }
 
 void versijadu::sarasas3_gen() {
     max = 10;
     srand(time(0));
-
     sarasas3 << "Pavarde      " << "Vardas       " << "Egz      " << "ND1 - ND5" << endl;
     sarasas3 << "------------------------------------------------" << endl;
-
     cout << "Sarasas 3 is being generated..." << endl;
     for (int i = 1; i <= 100000; i++)
     {
@@ -207,17 +198,14 @@ void versijadu::sarasas3_gen() {
     }
     cout << "Sarasas 3 has been generated." << endl;
     cout << endl;
-
     sarasas3.close();
 }
 
 void versijadu::sarasas4_gen() {
     max = 10;
     srand(time(0));
-
     sarasas4 << "Pavarde      " << "Vardas       " << "Egz      " << "ND1 - ND5" << endl;
     sarasas4 << "------------------------------------------------" << endl;
-
     cout << "Sarasas 4 is being generated..." << endl;
     for (int i = 1; i <= 1000000; i++)
     {
@@ -232,17 +220,14 @@ void versijadu::sarasas4_gen() {
     }
     cout << "Sarasas 4 has been generated." << endl;
     cout << endl;
-
     sarasas4.close();
 }
 
 void versijadu::sarasas5_gen() {
     max = 10;
     srand(time(0));
-
     sarasas5 << "Pavarde      " << "Vardas       " << "Egz      " << "ND1 - ND5" << endl;
     sarasas5 << "------------------------------------------------" << endl;
-
     cout << "Sarasas 5 is being generated..." << endl;
     for (int i = 1; i <= 10000000; i++)
     {
@@ -257,49 +242,57 @@ void versijadu::sarasas5_gen() {
     }
     cout << "Sarasas 5 has been generated." << endl;
     cout << endl;
-
     sarasas5.close();
 }
 
 void versijadu::resetSarasus() {
-    ofstream sarasas1{ "sarasai/sarasas1.txt" };
-    ofstream sarasas2{ "sarasai/sarasas2.txt" };
-    ofstream sarasas3{ "sarasai/sarasas3.txt" };
-    ofstream sarasas4{ "sarasai/sarasas4.txt" };
-    ofstream sarasas5{ "sarasai/sarasas5.txt" };
+    ofstream sarasas1{ "sarasas1.txt" };
+    ofstream sarasas2{ "sarasas2.txt" };
+    ofstream sarasas3{ "sarasas3.txt" };
+    ofstream sarasas4{ "sarasas4.txt" };
+    ofstream sarasas5{ "sarasas5.txt" };
+    ofstream sarasas1_vargsiukai{ "sarasas1-vargsiukai.txt" };
+    ofstream sarasas1_kietiakiai{ "sarasas1-kietiakiai.txt" };
+    ofstream sarasas2_vargsiukai{ "sarasas2-vargsiukai.txt" };
+    ofstream sarasas2_kietiakiai{ "sarasas2-kietiakiai.txt" };
+    ofstream sarasas3_vargsiukai{ "sarasas3-vargsiukai.txt" };
+    ofstream sarasas3_kietiakiai{ "sarasas3-kietiakiai.txt" };
+    ofstream sarasas4_vargsiukai{ "sarasas4-vargsiukai.txt" };
+    ofstream sarasas4_kietiakiai{ "sarasas4-kietiakiai.txt" };
+    ofstream sarasas5_vargsiukai{ "sarasas5-vargsiukai.txt" };
+    ofstream sarasas5_kietiakiai{ "sarasas5-kietiakiai.txt" };
+}
 
-    ofstream sarasas1_vargsiukai{ "final-sarasai/sarasas1-vargsiukai.txt" };
-    ofstream sarasas1_kietiakiai{ "final-sarasai/sarasas1-kietiakiai.txt" };
-    ofstream sarasas2_vargsiukai{ "final-sarasai/sarasas2-vargsiukai.txt" };
-    ofstream sarasas2_kietiakiai{ "final-sarasai/sarasas2-kietiakiai.txt" };
-    ofstream sarasas3_vargsiukai{ "final-sarasai/sarasas3-vargsiukai.txt" };
-    ofstream sarasas3_kietiakiai{ "final-sarasai/sarasas3-kietiakiai.txt" };
-    ofstream sarasas4_vargsiukai{ "final-sarasai/sarasas4-vargsiukai.txt" };
-    ofstream sarasas4_kietiakiai{ "final-sarasai/sarasas4-kietiakiai.txt" };
-    ofstream sarasas5_vargsiukai{ "final-sarasai/sarasas5-vargsiukai.txt" };
-    ofstream sarasas5_kietiakiai{ "final-sarasai/sarasas5-kietiakiai.txt" };
+void versijadu::resetIsrusiuotusFailus() {
+    ofstream sarasas1_vargsiukai{ "sarasas1-vargsiukai.txt" };
+    ofstream sarasas1_kietiakiai{ "sarasas1-kietiakiai.txt" };
+    ofstream sarasas2_vargsiukai{ "sarasas2-vargsiukai.txt" };
+    ofstream sarasas2_kietiakiai{ "sarasas2-kietiakiai.txt" };
+    ofstream sarasas3_vargsiukai{ "sarasas3-vargsiukai.txt" };
+    ofstream sarasas3_kietiakiai{ "sarasas3-kietiakiai.txt" };
+    ofstream sarasas4_vargsiukai{ "sarasas4-vargsiukai.txt" };
+    ofstream sarasas4_kietiakiai{ "sarasas4-kietiakiai.txt" };
+    ofstream sarasas5_vargsiukai{ "sarasas5-vargsiukai.txt" };
+    ofstream sarasas5_kietiakiai{ "sarasas5-kietiakiai.txt" };
 }
 
 void versijadu::sarasutikrinimas() {
     start_time = Clock::now();
-    ifstream sarasas1_tikrinimas("sarasai/sarasas1.txt");
-    ifstream sarasas2_tikrinimas("sarasai/sarasas2.txt");
-    ifstream sarasas3_tikrinimas("sarasai/sarasas3.txt");
-    ifstream sarasas4_tikrinimas("sarasai/sarasas4.txt");
-    ifstream sarasas5_tikrinimas("sarasai/sarasas5.txt");
-
+    ifstream sarasas1_tikrinimas("sarasas1.txt");
+    ifstream sarasas2_tikrinimas("sarasas2.txt");
+    ifstream sarasas3_tikrinimas("sarasas3.txt");
+    ifstream sarasas4_tikrinimas("sarasas4.txt");
+    ifstream sarasas5_tikrinimas("sarasas5.txt");
     sarasas1_tikrinimas.seekg(0, ios::end);
     sarasas2_tikrinimas.seekg(0, ios::end);
     sarasas3_tikrinimas.seekg(0, ios::end);
     sarasas4_tikrinimas.seekg(0, ios::end);
     sarasas5_tikrinimas.seekg(0, ios::end);
-
     if (sarasas1_tikrinimas.tellg() == 0 || sarasas2_tikrinimas.tellg() == 0 || sarasas3_tikrinimas.tellg() == 0 || sarasas4_tikrinimas.tellg() == 0 || sarasas5_tikrinimas.tellg() == 0) {
         cout << "!--- Kadangi sarasas/ai yra tusti, jis/e vistiek bus sugeneruoti." << endl;
         cout << "Please wait..." << endl;
         cout << endl;
     }
-
     if (sarasas1_tikrinimas.tellg() == 0) {
         cout << "Sarasas 1 is empty." << endl;
         sarasas1_gen();
@@ -309,16 +302,16 @@ void versijadu::sarasutikrinimas() {
         sarasas2_gen();
     }
     if (sarasas3_tikrinimas.tellg() == 0) {
-        cout << "Sarasas 3 is empty." << endl; // paskui pasalinti komentara
-        sarasas3_gen(); // paskui pasalinti komentara
+        cout << "Sarasas 3 is empty." << endl;
+        sarasas3_gen();
     }
     if (sarasas4_tikrinimas.tellg() == 0) {
-        cout << "Sarasas 4 is empty." << endl; // paskui pasalinti komentara
-        sarasas4_gen(); // paskui pasalinti komentara
+        cout << "Sarasas 4 is empty." << endl;
+        sarasas4_gen();
     }
     if (sarasas5_tikrinimas.tellg() == 0) {
-        cout << "Sarasas 5 is empty." << endl; // paskui pasalinti komentara
-        sarasas5_gen(); // paskui pasalinti komentara
+        cout << "Sarasas 5 is empty." << endl;
+        sarasas5_gen();
     }
     end_time = Clock::now();
 }
@@ -352,10 +345,8 @@ void versijadu::input_main(int iki, string sarasas) {
     start_time2 = Clock::now();
     fstream input(sarasas, ios::in);
     if (input.is_open()) {
-
         getline(input, dummy);
         getline(input, dummy);
-
         for (int p = 0; p < iki; p++)
         {
             input >> pavardeT;
@@ -375,13 +366,10 @@ void versijadu::input_main(int iki, string sarasas) {
                 parser >> x;
                 namaiV.push_back(x);
             }
-
             vidurkisV();
             finalGradeV(averageV[p], egzaminasV[p]);
-
             vidurkisM();
             finalGradeM(averageM[p], egzaminasV[p]);
-
             namaiV.clear();
             getline(input, dummy);
         }
@@ -397,10 +385,8 @@ void versijadu::input_output(int iki, ofstream& vargsiukai, ofstream& kietiakiai
     start_time4 = Clock::now();
     vargsiukai << "Pavarde           " << "Vardas            " << "Egzaminas         " << "Galutinis (Med.)  " << "Galutinis (Vid.)" << endl;
     vargsiukai << "----------------------------------------------------------------------------------------" << endl;
-
     kietiakiai << "Pavarde           " << "Vardas            " << "Egzaminas         " << "Galutinis (Med.)  " << "Galutinis (Vid.)" << endl;
     kietiakiai << "----------------------------------------------------------------------------------------" << endl;
-
     for (int i = 0; i < iki; i++)
     {
         if (galutinisV[i] < 5.00) {
@@ -411,7 +397,6 @@ void versijadu::input_output(int iki, ofstream& vargsiukai, ofstream& kietiakiai
             vargsiukai << left << setw(nameWidth) << setfill(separator) << setprecision(2) << fixed << galutinisV[i];
             vargsiukai << endl;
         }
-
         if (galutinisV[i] >= 5.00) {
             kietiakiai << left << setw(nameWidth) << setfill(separator) << pavardeV[i];
             kietiakiai << left << setw(nameWidth) << setfill(separator) << vardasV[i];
@@ -427,7 +412,7 @@ void versijadu::input_output(int iki, ofstream& vargsiukai, ofstream& kietiakiai
 
 void versijadu::output_sarasas1() {
     cout << "Sarasas 1 - Vargsiukai and Kietiakiai is progress..." << endl;
-    input_main(1000, "sarasai/sarasas1.txt");
+    input_main(1000, "sarasas1.txt");
     input_output(1000, sarasas1_vargsiukai, sarasas1_kietiakiai);
     cout << "Sarasas 1 splicing is completed." << endl;
     cout << endl;
@@ -435,7 +420,7 @@ void versijadu::output_sarasas1() {
 
 void versijadu::output_sarasas2() {
     cout << "Sarasas 2 - Vargsiukai and Kietiakiai is progress..." << endl;
-    input_main(10000, "sarasai/sarasas2.txt");
+    input_main(10000, "sarasas2.txt");
     input_output(10000, sarasas2_vargsiukai, sarasas2_kietiakiai);
     cout << "Sarasas 2 splicing is completed." << endl;
     cout << endl;
@@ -443,7 +428,7 @@ void versijadu::output_sarasas2() {
 
 void versijadu::output_sarasas3() {
     cout << "Sarasas 3 - Vargsiukai and Kietiakiai is progress..." << endl;
-    input_main(100000, "sarasai/sarasas3.txt");
+    input_main(100000, "sarasas3.txt");
     input_output(100000, sarasas3_vargsiukai, sarasas3_kietiakiai);
     cout << "Sarasas 3 splicing is completed." << endl;
     cout << endl;
@@ -451,7 +436,7 @@ void versijadu::output_sarasas3() {
 
 void versijadu::output_sarasas4() {
     cout << "Sarasas 4 - Vargsiukai and Kietiakiai is progress..." << endl;
-    input_main(1000000, "sarasai/sarasas4.txt");
+    input_main(1000000, "sarasas4.txt");
     input_output(1000000, sarasas4_vargsiukai, sarasas4_kietiakiai);
     cout << "Sarasas 4 splicing is completed." << endl;
     cout << endl;
@@ -459,7 +444,7 @@ void versijadu::output_sarasas4() {
 
 void versijadu::output_sarasas5() {
     cout << "Sarasas 5 - Vargsiukai and Kietiakiai is progress..." << endl;
-    input_main(10000000, "sarasai/sarasas5.txt");
+    input_main(10000000, "sarasas5.txt");
     input_output(10000000, sarasas5_vargsiukai, sarasas5_kietiakiai);
     cout << "Sarasas 5 splicing is completed." << endl;
     cout << endl;
@@ -469,9 +454,9 @@ void versijadu::output_sarasu_gen() {
     start_time = Clock::now();
     sarasas1_gen();
     sarasas2_gen();
-    sarasas3_gen(); // paskui pasalinti komentara
-    sarasas4_gen(); // paskui pasalinti komentara
-    sarasas5_gen(); // paskui pasalinti komentara
+    sarasas3_gen();
+    sarasas4_gen();
+    sarasas5_gen();
     end_time = Clock::now();
 }
 
@@ -479,9 +464,9 @@ void versijadu::output_rusiavimas() {
     start_time3 = Clock::now();
     output_sarasas1();
     output_sarasas2();
-    output_sarasas3(); // paskui pasalinti komentara
-    output_sarasas4(); // paskui pasalinti komentara
-    output_sarasas5(); // paskui pasalinti komentara
+    output_sarasas3();
+    output_sarasas4();
+    output_sarasas5();
     end_time3 = Clock::now();
 }
 
@@ -495,14 +480,11 @@ void versijadu::spartos_analize() {
 int main(int argc, char const* argv[])
 {
     // system("CLS");
-    cout << endl;
-    cout << "!--- Make sure folders named 'sarasai' and 'final-sarasai' are created otherwise program won't work!" << endl;
-    cout << endl;
-
     versijadu v2;
     string ans;
     string answ;
 
+    cout << endl;
     cout << "Ar norite sugeneruoti 5 naujus sarasus? (y/n) ";
     cin >> ans;
 
@@ -528,6 +510,8 @@ int main(int argc, char const* argv[])
     if (answ == "y" || answ == "Y") {
         cout << "Please wait..." << endl;
         cout << endl;
+        v2.resetIsrusiuotusFailus();
+        v2.resetVectors();
         v2.output_rusiavimas();
         cout << endl;
         v2.spartos_analize();
