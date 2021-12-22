@@ -163,7 +163,6 @@ double dienynas::mokDuomenys() {
     cout << "Iveskite varda: ";
     cin >> vardas;
     vardasV.push_back(vardas);
-
     cout << "Iveskite pavarde: ";
     cin >> pavarde;
     pavardeV.push_back(pavarde);
