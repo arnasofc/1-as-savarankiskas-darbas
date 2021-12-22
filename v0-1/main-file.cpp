@@ -1,6 +1,6 @@
 /*
 
-    V0.1 darbas su failais
+    V0.2
 
 */
 #include "main-file.h"
@@ -10,7 +10,7 @@ int main() {
     d1.lineInfo();
     d1.rusiavimas();
     d1.input();
-    system("CLS");
+    //  system("CLS");
     d1.output();
     remove("tempfile.txt");
 
