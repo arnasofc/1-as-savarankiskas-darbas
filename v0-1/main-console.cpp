@@ -12,5 +12,5 @@ int main() {
     system("CLS");
     d1.print();
 
-    // system("pause");
+    system("pause");
 }

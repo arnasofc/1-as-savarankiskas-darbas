@@ -14,5 +14,5 @@ int main() {
     d1.output();
     remove("tempfile.txt");
 
-    // system("pause");
+    system("pause");
 }
