@@ -1,8 +1,3 @@
-/*
-
-    V0.1 iki darbo su failais
-
-*/
 #include "main-console.h"
 
 int main() {
