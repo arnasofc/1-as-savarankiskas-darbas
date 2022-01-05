@@ -159,7 +159,6 @@ void versijadu::sarasas1_gen() {
 
 void versijadu::sarasas2_gen() {
     max = 10;
-    srand(time(0));
     sarasas2 << "Pavarde      " << "Vardas       " << "Egz      " << "ND1 - ND5" << endl;
     sarasas2 << "------------------------------------------------" << endl;
     cout << "Sarasas 2 is being generated..." << endl;
@@ -181,7 +180,6 @@ void versijadu::sarasas2_gen() {
 
 void versijadu::sarasas3_gen() {
     max = 10;
-    srand(time(0));
     sarasas3 << "Pavarde      " << "Vardas       " << "Egz      " << "ND1 - ND5" << endl;
     sarasas3 << "------------------------------------------------" << endl;
     cout << "Sarasas 3 is being generated..." << endl;
@@ -203,7 +201,6 @@ void versijadu::sarasas3_gen() {
 
 void versijadu::sarasas4_gen() {
     max = 10;
-    srand(time(0));
     sarasas4 << "Pavarde      " << "Vardas       " << "Egz      " << "ND1 - ND5" << endl;
     sarasas4 << "------------------------------------------------" << endl;
     cout << "Sarasas 4 is being generated..." << endl;
@@ -225,7 +222,6 @@ void versijadu::sarasas4_gen() {
 
 void versijadu::sarasas5_gen() {
     max = 10;
-    srand(time(0));
     sarasas5 << "Pavarde      " << "Vardas       " << "Egz      " << "ND1 - ND5" << endl;
     sarasas5 << "------------------------------------------------" << endl;
     cout << "Sarasas 5 is being generated..." << endl;
@@ -532,6 +528,6 @@ int main(int argc, char const* argv[])
         system("pause");
         return 0;
     }
-    // system("pause");
+    system("pause");
     return 0;
 }
