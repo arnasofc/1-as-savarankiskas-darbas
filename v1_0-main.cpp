@@ -7,6 +7,7 @@
 #include <sstream> // Eiluciu ir stulpeliu failo skaiciavimui
 #include <chrono>
 #include <list>
+#include <deque>
 
 using namespace std; // Std pasalinimui
 using namespace std::chrono;
@@ -72,6 +73,12 @@ public:
     list< double > egzaminasL;
     list<double >::iterator egzaL = egzaminasL.begin();
 
+    // Failo duomenu saugojimas deque
+    deque< string > vardasD;
+    deque< string > pavardeD;
+    deque< double > namaiD; // Namu darbai
+    deque< double > egzaminasD;
+
     // Namu darbu ivedimui is failo
     double temp; // Placeholder
 
@@ -79,10 +86,14 @@ public:
     double hold;
     double hold2;
     vector< double > averageV; // Vectoriuje laikomi rezultatai V
+    list< double > averageVList; // Liste laikomi rezultatai V
+    deque< double > averageVDeque; // Deque laikomi rezultatai V
 
     //Mediano skaiciavimui
     double hold3;
     vector< double > averageM; // Vectoriuje laikomi rezultatai M
+    list< double > averageMList; // Liste laikomi rezultatai M
+    deque< double > averageMDeque; // Deque laikomi rezultatai M
 
     // Is string i integer konvertavimui
     string laikom;
@@ -92,6 +103,10 @@ public:
     double vidurkisGM;
     vector < double > galutinisV;  // Vectoriuje laikomi rezultatai V
     vector < double > galutinisM;  // Vectoriuje laikomi rezultatai M
+    list < double > galutinisVList;  // Liste laikomi rezultatai V
+    list < double > galutinisMList;  // Liste laikomi rezultatai M
+    deque < double > galutinisVDeque;  // Deque laikomi rezultatai V
+    deque < double > galutinisMDeque;  // Deque laikomi rezultatai M
 
     void printExecutionTime(ClockTime, ClockTime, string);
     void resetVectors();
@@ -102,6 +117,8 @@ public:
     void finalGradeM(double, double); // Galutinis balas M
 
     void input_main(int, string);
+    void input_mainList(int, string);
+    void input_mainDeque(int, string);
     void input_output(int, ofstream&, ofstream&);
 
     void output_sarasas1();
@@ -109,6 +126,8 @@ public:
     void output_sarasas3();
     void output_sarasas4();
     void output_sarasas5();
+
+    void kiti_konteineriai();
 
     void resetSarasus();
     void resetIsrusiuotusFailus();
@@ -125,6 +144,8 @@ public:
     ClockTime end_time4;
     ClockTime start_time5;
     ClockTime end_time5;
+    ClockTime start_time6;
+    ClockTime end_time6;
     void spartos_analize();
 };
 
@@ -139,13 +160,29 @@ void versijadu::printExecutionTime(ClockTime start_time, ClockTime end_time, str
 
 void versijadu::resetVectors() {
     pavardeV.clear();
+    pavardeL.clear();
+    pavardeD.clear();
     vardasV.clear();
+    vardasL.clear();
+    vardasD.clear();
     egzaminasV.clear();
+    egzaminasL.clear();
+    egzaminasD.clear();
     galutinisM.clear();
+    galutinisMList.clear();
+    galutinisMDeque.clear();
     galutinisV.clear();
+    galutinisVList.clear();
+    galutinisVDeque.clear();
     namaiV.clear();
+    namaiL.clear();
+    namaiD.clear();
     averageV.clear();
+    averageVList.clear();
+    averageVDeque.clear();
     averageM.clear();
+    averageMList.clear();
+    averageMDeque.clear();
 }
 
 void versijadu::sarasas1_gen() {
@@ -351,11 +388,11 @@ void versijadu::finalGradeM(double vidurkis, double egzaminas) {
 }
 
 void versijadu::input_main(int iki, string sarasas) {
+    start_time2 = Clock::now();
     fstream input(sarasas, ios::in);
     if (input.is_open()) {
         getline(input, dummy);
         getline(input, dummy);
-        start_time2 = Clock::now();
         for (int p = 0; p < iki; p++)
         {
             input >> pavardeT;
@@ -382,8 +419,19 @@ void versijadu::input_main(int iki, string sarasas) {
             namaiV.clear();
             getline(input, dummy);
         }
-        end_time2 = Clock::now();
-        start_time5 = Clock::now();
+        input.close();
+    }
+    else {
+        cout << "Something went wrong! Check if sarasas[i].txt exist!";
+    }
+    end_time2 = Clock::now();
+}
+
+void versijadu::input_mainList(int iki, string sarasas) {
+    fstream input(sarasas, ios::in);
+    if (input.is_open()) {
+        getline(input, dummy);
+        getline(input, dummy);
         for (int p = 0; p < iki; p++)
         {
             input >> pavardeT;
@@ -406,13 +454,45 @@ void versijadu::input_main(int iki, string sarasas) {
             namaiL.clear();
             getline(input, dummy);
         }
-        end_time5 = Clock::now();
         input.close();
     }
     else {
         cout << "Something went wrong! Check if sarasas[i].txt exist!";
     }
+}
 
+void versijadu::input_mainDeque(int iki, string sarasas) {
+    fstream input(sarasas, ios::in);
+    if (input.is_open()) {
+        getline(input, dummy);
+        getline(input, dummy);
+        for (int p = 0; p < iki; p++)
+        {
+            input >> pavardeT;
+            pavardeD.push_back(pavardeT);
+
+            input >> vardasT;
+            vardasD.push_back(vardasT);
+
+            input >> egzaminasT;
+            egzaminasD.push_back(egzaminasT);
+
+            for (int i = 0; i < 5; i++)
+            {
+                input >> laikom;
+                stringstream parser(laikom);
+                int x = 0;
+                parser >> x;
+                namaiD.push_back(x);
+            }
+            namaiD.clear();
+            getline(input, dummy);
+        }
+        input.close();
+    }
+    else {
+        cout << "Something went wrong! Check if sarasas[i].txt exist!";
+    }
 }
 
 void versijadu::input_output(int iki, ofstream& vargsiukai, ofstream& kietiakiai) {
@@ -488,9 +568,9 @@ void versijadu::output_sarasu_gen() {
     start_time = Clock::now();
     sarasas1_gen();
     sarasas2_gen();
-    // sarasas3_gen();
-    // sarasas4_gen();
-    // sarasas5_gen();
+    sarasas3_gen();
+    sarasas4_gen();
+    sarasas5_gen();
     end_time = Clock::now();
 }
 
@@ -498,17 +578,38 @@ void versijadu::output_rusiavimas() {
     start_time3 = Clock::now();
     output_sarasas1();
     output_sarasas2();
-    // output_sarasas3();
-    // output_sarasas4();
-    // output_sarasas5();
+    output_sarasas3();
+    output_sarasas4();
+    output_sarasas5();
     end_time3 = Clock::now();
+    cout << "Please wait... Testing \"List\" and \"Deque\" containers..." << endl;
+    kiti_konteineriai();
+    cout << "Containers testing has been completed." << endl;
+    cout << endl;
+}
+
+void versijadu::kiti_konteineriai() {
+    start_time5 = Clock::now();
+    input_mainList(1000, "sarasas1.txt");
+    input_mainList(10000, "sarasas2.txt");
+    input_mainList(100000, "sarasas3.txt");
+    input_mainList(1000000, "sarasas4.txt");
+    end_time5 = Clock::now();
+
+    start_time6 = Clock::now();
+    input_mainDeque(1000, "sarasas1.txt");
+    input_mainDeque(10000, "sarasas2.txt");
+    input_mainDeque(100000, "sarasas3.txt");
+    input_mainDeque(1000000, "sarasas4.txt");
+    end_time6 = Clock::now();
 }
 
 void versijadu::spartos_analize() {
     printExecutionTime(start_time, end_time, "Failu (Sarasu) kurimas:                            ");
     printExecutionTime(start_time2, end_time2, "Duomenu nuskaitymas is failu (Vector):             ");
     printExecutionTime(start_time5, end_time5, "Duomenu nuskaitymas is failu (List):               ");
-    printExecutionTime(start_time3, end_time3, "Studentu rusiavimas i du naujus failus:            ");
+    printExecutionTime(start_time6, end_time6, "Duomenu nuskaitymas is failu (Deque):              ");
+    printExecutionTime(start_time3, end_time3, "Studentu rusiavimas i du naujus failus (Vector):   ");
     printExecutionTime(start_time4, end_time4, "Surusiuotu studentu isvedimas i du naujus failus:  ");
 }
 
@@ -524,7 +625,7 @@ int main(int argc, char const* argv[])
     cin >> ans;
 
     if (ans == "y" || ans == "Y") {
-        cout << "Please wait..." << endl;
+        cout << "Please wait... (Approximate waiting time 10 minutes~)" << endl;
         cout << endl;
         v2.resetSarasus();
         v2.output_sarasu_gen();
@@ -533,6 +634,7 @@ int main(int argc, char const* argv[])
         v2.sarasutikrinimas();
     }
     else {
+        cout << endl;
         cout << "Something wen't wrong!";
         cout << endl;
         system("pause");
@@ -543,30 +645,30 @@ int main(int argc, char const* argv[])
     cin >> answ;
 
     if (answ == "y" || answ == "Y") {
-        cout << "Please wait..." << endl;
+        cout << "Please wait... (Approximate waiting time 20 minutes~)" << endl;
         cout << endl;
         v2.resetIsrusiuotusFailus();
         v2.resetVectors();
         v2.output_rusiavimas();
-        cout << endl;
         v2.spartos_analize();
         cout << endl;
         cout << "Job has been completed." << endl;
         cout << endl;
     }
     else if (answ == "n" || answ == "N") {
-        cout << endl;
         v2.spartos_analize();
         cout << endl;
         cout << "Job has been completed." << endl;
         cout << endl;
     }
     else {
+        cout << endl;
         cout << "Something wen't wrong!" << endl;
         cout << endl;
         system("pause");
         return 0;
     }
-    // system("pause");
+
+    system("pause");
     return 0;
 }
