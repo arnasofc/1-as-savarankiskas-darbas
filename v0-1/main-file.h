@@ -49,7 +49,6 @@ public:
     vector < double > galutinisV;  // Vectoriuje laikomi rezultatai V
     vector < double > galutinisM;  // Vectoriuje laikomi rezultatai M
 
-
     vector <string> surusiuotas;
 
     void input();
