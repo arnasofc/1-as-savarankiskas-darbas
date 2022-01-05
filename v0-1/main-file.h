@@ -172,7 +172,6 @@ void uzduotis::input() {
     else {
         cout << "Something went wrong! Check if kursiokai.txt exist!";
     }
-
 }
 
 void uzduotis::output() {
