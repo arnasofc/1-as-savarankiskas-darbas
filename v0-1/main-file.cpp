@@ -1,8 +1,3 @@
-/*
-
-    V0.2
-
-*/
 #include "main-file.h"
 
 int main() {
