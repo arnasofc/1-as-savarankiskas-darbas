@@ -8,6 +8,10 @@ https://user-images.githubusercontent.com/72468560/149018516-9f5f8ae8-60e7-4876-
 
 ## V0.2 Full Release (Video)
 
-https://user-images.githubusercontent.com/72468560/149021737-c5cc3285-6a82-4ee4-b317-4cfb29336c26.mp4
+
+
+https://user-images.githubusercontent.com/72468560/149025683-e4e19a1f-f818-4176-82cc-7a33b9ba9069.mp4
+
+
 
 ## V1.0 Full Release (Video)
