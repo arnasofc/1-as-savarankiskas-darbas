@@ -4,6 +4,10 @@ Aplankę v0-1 rasite programą ir programos kodą skirtai v0.1 versijai: darbas 
 
 ## V0.1 Full Release (Video)
 
+https://user-images.githubusercontent.com/72468560/149018516-9f5f8ae8-60e7-4876-adb3-bbdc06b10f0a.mp4
+
 ## V0.2 Full Release (Video)
+
+https://user-images.githubusercontent.com/72468560/149021737-c5cc3285-6a82-4ee4-b317-4cfb29336c26.mp4
 
 ## V1.0 Full Release (Video)
