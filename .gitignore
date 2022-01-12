@@ -2,9 +2,7 @@
 .vscode/tasks.json
 .vscode/launch.json
 .vscode/settings.json
-main-file.exe
 main-console.exe
-v0_2-main.exe
 sarasai/sarasas1.txt
 sarasai/sarasas2.txt
 sarasai/sarasas3.txt
@@ -27,4 +25,3 @@ sarasas5-kietiakiai.txt
 sarasas5-vargsiukai.txt
 sarasas5.txt
 .gitignore
-v1_0-main.exe
