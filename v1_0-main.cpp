@@ -558,8 +558,8 @@ void versijadu::output_sarasas4() {
 
 void versijadu::output_sarasas5() {
     cout << "Sarasas 5 - Vargsiukai and Kietiakiai is progress..." << endl;
-    input_main(10000000, "sarasas5.txt");
-    input_output(10000000, sarasas5_vargsiukai, sarasas5_kietiakiai);
+    input_main(1000000, "sarasas5.txt");
+    input_output(1000000, sarasas5_vargsiukai, sarasas5_kietiakiai);
     cout << "Sarasas 5 splicing is completed." << endl;
     cout << endl;
 }
