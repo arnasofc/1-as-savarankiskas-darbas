@@ -103,6 +103,7 @@ public:
     void resetIsrusiuotusFailus();
     void output_sarasu_gen();
     void output_rusiavimas();
+    void output_sarasai_nuskaitymas();
 
     ClockTime start_time;
     ClockTime end_time;
@@ -309,6 +310,11 @@ void versijadu::sarasutikrinimas() {
         cout << "Sarasas 5 is empty." << endl;
         sarasas5_gen();
     }
+    sarasas1_tikrinimas.close();
+    sarasas2_tikrinimas.close();
+    sarasas3_tikrinimas.close();
+    sarasas4_tikrinimas.close();
+    sarasas5_tikrinimas.close();
     end_time = Clock::now();
 }
 
@@ -317,6 +323,7 @@ void versijadu::vidurkisV() {
     hold = accumulate(namaiV.begin(), namaiV.end(), 0);
     hold2 = hold / namaiV.size();
     averageV.push_back(hold2);
+    namaiV.clear();
 }
 
 void versijadu::finalGradeV(double vidurkis, double egzaminas) {
@@ -338,7 +345,6 @@ void versijadu::finalGradeM(double vidurkis, double egzaminas) {
 }
 
 void versijadu::input_main(int iki, string sarasas) {
-    start_time2 = Clock::now();
     fstream input(sarasas, ios::in);
     if (input.is_open()) {
         getline(input, dummy);
@@ -367,19 +373,17 @@ void versijadu::input_main(int iki, string sarasas) {
             vidurkisM();
             finalGradeM(averageM[p], egzaminasV[p]);
             namaiV.clear();
-            getline(input, dummy);
         }
-        input.close();
     }
     else {
         cout << "Something went wrong! Check if sarasas[i].txt exist!";
+        input.close();
         system("pause");
     }
-    end_time2 = Clock::now();
+    input.close();
 }
 
 void versijadu::input_output(int iki, ofstream& vargsiukai, ofstream& kietiakiai) {
-    start_time4 = Clock::now();
     vargsiukai << "Pavarde           " << "Vardas            " << "Egzaminas         " << "Galutinis (Med.)  " << "Galutinis (Vid.)" << endl;
     vargsiukai << "----------------------------------------------------------------------------------------" << endl;
     kietiakiai << "Pavarde           " << "Vardas            " << "Egzaminas         " << "Galutinis (Med.)  " << "Galutinis (Vid.)" << endl;
@@ -391,65 +395,19 @@ void versijadu::input_output(int iki, ofstream& vargsiukai, ofstream& kietiakiai
             vargsiukai << left << setw(nameWidth) << setfill(separator) << vardasV[i];
             vargsiukai << left << setw(nameWidth) << setfill(separator) << setprecision(2) << fixed << egzaminasV[i];
             vargsiukai << left << setw(nameWidth) << setfill(separator) << setprecision(2) << fixed << galutinisM[i];
-            vargsiukai << left << setw(nameWidth) << setfill(separator) << setprecision(2) << fixed << galutinisV[i];
-            vargsiukai << endl;
+            vargsiukai << left << setw(nameWidth) << setfill(separator) << setprecision(2) << fixed << galutinisV[i] << endl;
         }
+    }
+    for (int i = 0; i < iki; i++)
+    {
         if (galutinisV[i] >= 5.00) {
             kietiakiai << left << setw(nameWidth) << setfill(separator) << pavardeV[i];
             kietiakiai << left << setw(nameWidth) << setfill(separator) << vardasV[i];
             kietiakiai << left << setw(nameWidth) << setfill(separator) << setprecision(2) << fixed << egzaminasV[i];
             kietiakiai << left << setw(nameWidth) << setfill(separator) << setprecision(2) << fixed << galutinisM[i];
-            kietiakiai << left << setw(nameWidth) << setfill(separator) << setprecision(2) << fixed << galutinisV[i];
-            kietiakiai << endl;
+            kietiakiai << left << setw(nameWidth) << setfill(separator) << setprecision(2) << fixed << galutinisV[i] << endl;
         }
     }
-    resetVectors();
-    end_time4 = Clock::now();
-}
-
-void versijadu::output_sarasas1() {
-    cout << "Sarasas 1 - Vargsiukai and Kietiakiai is progress..." << endl;
-    resetVectors();
-    input_main(1000, "sarasas1.txt");
-    input_output(1000, sarasas1_vargsiukai, sarasas1_kietiakiai);
-    cout << "Sarasas 1 splicing is completed." << endl;
-    cout << endl;
-}
-
-void versijadu::output_sarasas2() {
-    cout << "Sarasas 2 - Vargsiukai and Kietiakiai is progress..." << endl;
-    resetVectors();
-    input_main(10000, "sarasas2.txt");
-    input_output(10000, sarasas2_vargsiukai, sarasas2_kietiakiai);
-    cout << "Sarasas 2 splicing is completed." << endl;
-    cout << endl;
-}
-
-void versijadu::output_sarasas3() {
-    cout << "Sarasas 3 - Vargsiukai and Kietiakiai is progress..." << endl;
-    resetVectors();
-    input_main(100000, "sarasas3.txt");
-    input_output(100000, sarasas3_vargsiukai, sarasas3_kietiakiai);
-    cout << "Sarasas 3 splicing is completed." << endl;
-    cout << endl;
-}
-
-void versijadu::output_sarasas4() {
-    cout << "Sarasas 4 - Vargsiukai and Kietiakiai is progress..." << endl;
-    resetVectors();
-    input_main(1000000, "sarasas4.txt");
-    input_output(1000000, sarasas4_vargsiukai, sarasas4_kietiakiai);
-    cout << "Sarasas 4 splicing is completed." << endl;
-    cout << endl;
-}
-
-void versijadu::output_sarasas5() {
-    cout << "Sarasas 5 - Vargsiukai and Kietiakiai is progress..." << endl;
-    resetVectors();
-    input_main(1000000, "sarasas5.txt");
-    input_output(100000, sarasas5_vargsiukai, sarasas5_kietiakiai);
-    cout << "Sarasas 5 splicing is completed." << endl;
-    cout << endl;
 }
 
 void versijadu::output_sarasu_gen() {
@@ -460,28 +418,78 @@ void versijadu::output_sarasu_gen() {
     sarasas4_gen();
     sarasas5_gen();
     end_time = Clock::now();
+    printExecutionTime(start_time, end_time, "Failu (Sarasu) kurimas: ");
+    cout << endl;
 }
 
 void versijadu::output_rusiavimas() {
-    start_time3 = Clock::now();
-    output_sarasas1();
-    output_sarasas2();
-    output_sarasas3();
-    output_sarasas4();
-    output_sarasas5();
-    end_time3 = Clock::now();
-}
+    cout << "Sarasu rusiavimas prasidejo..." << endl;
+    cout << endl;
+    start_time2 = Clock::now();
+    input_main(1000, "sarasas1.txt");
+    end_time2 = Clock::now();
+    printExecutionTime(start_time2, end_time2, "Duomenu nuskaitymas is failu (Sarasas 1): ");
 
-void versijadu::spartos_analize() {
-    printExecutionTime(start_time, end_time, "Failu (Sarasu) kurimas:                            ");
-    printExecutionTime(start_time2, end_time2, "Duomenu nuskaitymas is failu:                      ");
-    printExecutionTime(start_time3, end_time3, "Studentu rusiavimas i du naujus failus:            ");
-    printExecutionTime(start_time4, end_time4, "Surusiuotu studentu isvedimas i du naujus failus:  ");
+    start_time3 = Clock::now();
+    input_output(1000, sarasas1_vargsiukai, sarasas1_kietiakiai);
+    end_time3 = Clock::now();
+    printExecutionTime(start_time3, end_time3, "Studentu rusiavimas i du naujus failus ir isvedimas (Sarasas 1): ");
+
+    resetVectors();
+    cout << endl;
+
+    start_time2 = Clock::now();
+    input_main(10000, "sarasas2.txt");
+    end_time2 = Clock::now();
+    printExecutionTime(start_time2, end_time2, "Duomenu nuskaitymas is failu (Sarasas 2): ");
+
+    start_time3 = Clock::now();
+    input_output(10000, sarasas2_vargsiukai, sarasas2_kietiakiai);
+    end_time3 = Clock::now();
+    printExecutionTime(start_time3, end_time3, "Studentu rusiavimas i du naujus failus ir isvedimas (Sarasas 2): ");
+
+    resetVectors();
+    cout << endl;
+
+    start_time2 = Clock::now();
+    input_main(100000, "sarasas3.txt");
+    end_time2 = Clock::now();
+    printExecutionTime(start_time2, end_time2, "Duomenu nuskaitymas is failu (Sarasas 3): ");
+
+    start_time3 = Clock::now();
+    input_output(100000, sarasas3_vargsiukai, sarasas3_kietiakiai);
+    end_time3 = Clock::now();
+    printExecutionTime(start_time3, end_time3, "Studentu rusiavimas i du naujus failus ir isvedimas (Sarasas 3): ");
+
+    resetVectors();
+    cout << endl;
+
+    start_time2 = Clock::now();
+    input_main(1000000, "sarasas4.txt");
+    end_time2 = Clock::now();
+    printExecutionTime(start_time2, end_time2, "Duomenu nuskaitymas is failu (Sarasas 4): ");
+
+    start_time3 = Clock::now();
+    input_output(1000000, sarasas4_vargsiukai, sarasas4_kietiakiai);
+    end_time3 = Clock::now();
+    printExecutionTime(start_time3, end_time3, "Studentu rusiavimas i du naujus failus ir isvedimas (Sarasas 4): ");
+
+    resetVectors();
+    cout << endl;
+
+    start_time2 = Clock::now();
+    input_main(8000000, "sarasas5.txt");
+    end_time2 = Clock::now();
+    printExecutionTime(start_time2, end_time2, "Duomenu nuskaitymas is failu (Sarasas 5): ");
+
+    start_time3 = Clock::now();
+    input_output(8000000, sarasas5_vargsiukai, sarasas5_kietiakiai);
+    end_time3 = Clock::now();
+    printExecutionTime(start_time3, end_time3, "Studentu rusiavimas i du naujus failus ir isvedimas (Sarasas 5): ");
 }
 
 int main(int argc, char const* argv[])
 {
-    // system("CLS");
     versijadu v2;
     string ans;
     string answ;
@@ -510,20 +518,17 @@ int main(int argc, char const* argv[])
     cin >> answ;
 
     if (answ == "y" || answ == "Y") {
-        cout << "Please wait..." << endl;
         cout << endl;
         v2.resetIsrusiuotusFailus();
         v2.resetVectors();
         v2.output_rusiavimas();
         cout << endl;
-        v2.spartos_analize();
         cout << endl;
-        cout << "Job has been completed." << endl;
+        cout << "Sarasu rusiavimas baigesi." << endl;
         cout << endl;
     }
     else if (answ == "n" || answ == "N") {
         cout << endl;
-        v2.spartos_analize();
         cout << endl;
         cout << "Job has been completed." << endl;
         cout << endl;
