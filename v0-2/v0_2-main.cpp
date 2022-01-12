@@ -373,6 +373,7 @@ void versijadu::input_main(int iki, string sarasas) {
     }
     else {
         cout << "Something went wrong! Check if sarasas[i].txt exist!";
+        system("pause");
     }
     end_time2 = Clock::now();
 }
@@ -408,6 +409,7 @@ void versijadu::input_output(int iki, ofstream& vargsiukai, ofstream& kietiakiai
 
 void versijadu::output_sarasas1() {
     cout << "Sarasas 1 - Vargsiukai and Kietiakiai is progress..." << endl;
+    resetVectors();
     input_main(1000, "sarasas1.txt");
     input_output(1000, sarasas1_vargsiukai, sarasas1_kietiakiai);
     cout << "Sarasas 1 splicing is completed." << endl;
@@ -416,6 +418,7 @@ void versijadu::output_sarasas1() {
 
 void versijadu::output_sarasas2() {
     cout << "Sarasas 2 - Vargsiukai and Kietiakiai is progress..." << endl;
+    resetVectors();
     input_main(10000, "sarasas2.txt");
     input_output(10000, sarasas2_vargsiukai, sarasas2_kietiakiai);
     cout << "Sarasas 2 splicing is completed." << endl;
@@ -424,6 +427,7 @@ void versijadu::output_sarasas2() {
 
 void versijadu::output_sarasas3() {
     cout << "Sarasas 3 - Vargsiukai and Kietiakiai is progress..." << endl;
+    resetVectors();
     input_main(100000, "sarasas3.txt");
     input_output(100000, sarasas3_vargsiukai, sarasas3_kietiakiai);
     cout << "Sarasas 3 splicing is completed." << endl;
@@ -432,6 +436,7 @@ void versijadu::output_sarasas3() {
 
 void versijadu::output_sarasas4() {
     cout << "Sarasas 4 - Vargsiukai and Kietiakiai is progress..." << endl;
+    resetVectors();
     input_main(1000000, "sarasas4.txt");
     input_output(1000000, sarasas4_vargsiukai, sarasas4_kietiakiai);
     cout << "Sarasas 4 splicing is completed." << endl;
@@ -440,8 +445,9 @@ void versijadu::output_sarasas4() {
 
 void versijadu::output_sarasas5() {
     cout << "Sarasas 5 - Vargsiukai and Kietiakiai is progress..." << endl;
-    input_main(10000000, "sarasas5.txt");
-    input_output(10000000, sarasas5_vargsiukai, sarasas5_kietiakiai);
+    resetVectors();
+    input_main(1000000, "sarasas5.txt");
+    input_output(100000, sarasas5_vargsiukai, sarasas5_kietiakiai);
     cout << "Sarasas 5 splicing is completed." << endl;
     cout << endl;
 }
