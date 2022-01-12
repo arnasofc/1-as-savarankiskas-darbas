@@ -602,7 +602,6 @@ void versijadu::output_rusiavimas() {
     input_output(8000000, sarasas5_vargsiukai, sarasas5_kietiakiai);
     end_time3 = Clock::now();
     printExecutionTime(start_time3, end_time3, "Studentu rusiavimas i du naujus failus ir isvedimas (Sarasas 5): ");
-
     cout << endl;
     cout << "Testuojami kiti konteineriai" << endl;
     kiti_konteineriai();
