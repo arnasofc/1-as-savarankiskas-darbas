@@ -14,4 +14,7 @@ https://user-images.githubusercontent.com/72468560/149025683-e4e19a1f-f818-4176-
 
 Link - https://www.youtube.com/watch?v=uKSb_8Nd1KI
 
-## V1.0 Full Release (Video - Įsijunkite garsą 🔊)
+## V1.0 Full Release
+
+Buvo ištestuoti List ir Deque konteineriai naudojant strategiją. (Programa veikia taip pat kaip ir V0.2)
+
